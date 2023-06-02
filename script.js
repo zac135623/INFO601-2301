@@ -8,6 +8,16 @@ function getRandomJoke() {
     });
 }
 
+function getTheme() {
+  const theme = document.getElementById("jokeTheme").value;
+
+  fetch(`https://v2.jokeapi.dev/joke/${theme}?type=twopart`)
+    .then((resp) => resp.json())
+    .then((data) => {
+      formatJoke(data);
+    });
+}
+
 function formatJoke(data) {
   const jokeDiv = document.getElementById("jokeDiv");
   jokeDiv.innerHTML = "";
